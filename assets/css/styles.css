@@ -1,4 +1,4 @@
-/* Reset */
+/* Remove default spacing */
 body {
     margin: 0;
     padding: 0;
@@ -7,19 +7,42 @@ body {
 
 /* Slide layout */
 .slide {
+    position: relative;
     height: 100vh;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     text-align: center;
     color: white;
-    background-size: cover;
-    background-position: center;
-    text-shadow: 2px 2px 5px black;
+    overflow: hidden;
 }
 
-/* Home page */
+/* Fullscreen background image */
+.slide img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* makes image fill screen */
+    z-index: -2;
+}
+
+/* Dark overlay for readability */
+.slide::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: -1;
+}
+
+/* Home page styling */
 .home {
     background-color: #2c3e50;
 }
@@ -37,7 +60,7 @@ button {
 }
 
 button:hover {
-    opacity: 0.8;
+    opacity: 0.85;
     transform: scale(1.05);
 }
 
